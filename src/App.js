@@ -5,20 +5,28 @@ import { fetch_api } from './API/fetch_api'
 
 function App() {
 
-  const [quote, SetQuote] = useState([]);
+  const [quote, SetQuote] = useState('');
   useEffect(() => {
-    fetch_api()
-      .then((data) => SetQuote(data))
-      .catch((err) => console.log(err))
+    fetchQuote();
   }, [])
+
+  const fetchQuote =()=>{
+    fetch_api()
+      .then((data) =>{ SetQuote(data)
+        console.log(data)
+      })
+      .catch((err) => console.log(err))
+  }
 
   return (
     <div className='container'>         
       <div className='card'>
-        <div>{quote.text}</div>  
-        <div>~{quote.author}</div>
-        <button className='btn'>New Quote</button>  
-      </div>     
+        <div>{quote && quote.slip.advice}</div>  
+        <button className='btn' onClick={fetchQuote}>New Quote</button>  
+      </div> 
+      <footer className='footer'>
+        Build for fun by Ram 
+      </footer>    
     </div>
   );
 }

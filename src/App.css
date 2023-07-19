@@ -2,6 +2,9 @@
 margin: 0;
 padding: 0;
 box-sizing: border-box;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+font-family: 'Poppins', sans-serif;
 }
 .container{
   display: flex;
@@ -10,12 +13,13 @@ box-sizing: border-box;
   text-align: center;
   flex-direction: column;
   height: 100vh;
+  background: linear-gradient(to right, #3a6186, #89253e);
 }
 .card{
-  background-color: yellow;
-  width: 40%;
-  height: 20%;
-  padding: 60px ;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  padding: 20px ;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,12 +27,61 @@ box-sizing: border-box;
   flex-direction: column;
   border: 2px solid red;
   border-radius: 10px;
-  
+  font-size: 20px;
+  animation:fade-in 1s ease-in-out;
+}
+@keyframes fade-in {
+     0%{
+      opacity:0;
+     }
+     100%{
+      opacity:1;
+     }
 }
 
 .btn{
-  
+  font-size: 16px;
   margin: 10px;
-  padding: 5px;
+  padding: 10px 20px;
   background-color: antiquewhite;
+  cursor: pointer;
+  border-radius: 4px;
+  border: none;
+  animation: scale-in 0.3s ease-in-out;
+}
+@keyframes scale-in {
+  0%{
+    transform: scale(0.9);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
+.btn:hover{
+  background-color:#0056b3;
+  color: white;
+  animation: pulse 0.5s infinite alternate;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+.footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  color: rgb(83, 96, 160);
+  background-color: antiquewhite;
+  padding: 5px;
+}
+
+@media(max-width:768px){
+  .card{
+    width:300px;
+  }
 }
