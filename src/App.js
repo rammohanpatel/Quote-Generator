@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+
 import './App.css';
+import React, { useEffect, useState } from 'react';
+import { fetch_api } from './API/fetch_api'
 
 function App() {
+
+  const [quote, SetQuote] = useState([]);
+  useEffect(() => {
+    fetch_api()
+      .then((data) => SetQuote(data))
+      .catch((err) => console.log(err))
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='container'>         
+      <div className='card'>
+        <div>{quote.text}</div>  
+        <div>~{quote.author}</div>
+        <button className='btn'>New Quote</button>  
+      </div>     
     </div>
   );
 }
